@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Mundial de la FIFA 2026</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+
+    <meta name="description" content="Resultados, clasificaciones y cuadro de eliminación directa de la Copa Mundial de la FIFA 2026 en tiempo real. Inicia sesión y guarda tu selección favorita.">
+    <meta property="og:title" content="Copa Mundial de la FIFA 2026">
+    <meta property="og:description" content="Resultados y clasificaciones oficiales del torneo. Guarda tu selección favorita e inicia sesión para seguir el Mundial.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Copa Mundial de la FIFA 2026">
+    <meta name="twitter:description" content="Resultados y clasificaciones oficiales del torneo en tiempo real.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --surface-bg: #0b0f19;
+            --card-bg: rgba(22, 28, 45, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #8f9cae;
+            --brand-primary: #38bdf8;
+            --success-glow: #10b981;
+            --table-hover: rgba(56, 189, 248, 0.04);
+            --nav-bg: rgba(11, 15, 25, 0.85);
+            --surface-solid: #121826;
+            color-scheme: dark;
+        }
+
+        html[data-theme="light"] {
+            --surface-bg: #f4f6f9;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-border: rgba(15, 23, 42, 0.12);
+            --text-primary: #000000;
+            --text-secondary: #374151;
+            --brand-primary: #0369a1;
+            --success-glow: #047857;
+            --table-hover: rgba(3, 105, 161, 0.07);
+            --nav-bg: rgba(255, 255, 255, 0.92);
+            --surface-solid: #ffffff;
+            color-scheme: light;
+        }
+
+        html[data-theme="light"] .cell-goals,
+        html[data-theme="light"] tr.fav-row .cell-team span,
+        html[data-theme="light"] .bracket-team.fav-team .bracket-team-name,
+        html[data-theme="light"] .fav-current-name,
+        html[data-theme="light"] #fav-current-name {
+            color: #92400e;
+        }
+
+        html[data-theme="light"] .card-header {
+            color: #0369a1;
+        }
+
+        html[data-theme="light"] .nav-link:hover,
+        html[data-theme="light"] .mobile-menu a {
+            color: #000000;
+        }
+
+        html[data-theme="light"] body {
+            background-image:
+                radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(2, 132, 199, 0.08) 0px, transparent 50%);
+        }
+
+        html[data-theme="light"] .btn-primary {
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--surface-bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(30, 64, 175, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 120px 20px 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo span {
+            color: var(--brand-primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.03);
+            border-color: var(--card-border);
+        }
+
+        .header-section {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 25px;
+        }
+
+        .header-section h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .header-section p {
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .section-title {
+            max-width: 1400px;
+            margin: 30px auto 25px auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--brand-primary);
+            border-left: 4px solid var(--brand-primary);
+            padding-left: 15px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card-group {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px 24px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--brand-primary);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .stats-table th {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            padding: 12px 14px;
+            background: rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .stats-table td {
+            padding: 14px;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            color: var(--text-primary);
+        }
+
+        .stats-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .stats-table tr:hover td {
+            background-color: var(--table-hover);
+            color: var(--text-primary);
+        }
+
+        .cell-center { text-align: center; }
+        
+        .cell-position {
+            font-weight: 600;
+            width: 40px;
+            position: relative;
+        }
+
+        tr:nth-child(1) .cell-position::before,
+        tr:nth-child(2) .cell-position::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 3px;
+            background-color: var(--success-glow);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .team-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flag-img {
+            width: 22px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        tr:hover .flag-img {
+            transform: translateY(-4px) scale(1.15);
+            box-shadow: 0 4px 8px rgba(56, 189, 248, 0.4);
+        }
+
+        .cell-team { font-weight: 600; color: var(--text-primary); }
+        .cell-important { font-weight: 700; color: var(--brand-primary); }
+        .dg-pos { color: #10b981; font-weight: 500; }
+        .dg-neg { color: #ef4444; font-weight: 500; }
+        .dg-neu { color: var(--text-secondary); }
+
+        .bracket-scroll-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+
+        .bracket-wrapper {
+            display: flex;
+            gap: 30px;
+            min-width: 1100px;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .bracket-round {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            flex: 1;
+        }
+
+        .bracket-round h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+        }
+
+        .bracket-match {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .bracket-team {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .bracket-team:last-child { border-bottom: none; }
+        .bracket-team:hover { background-color: var(--table-hover); }
+
+        .bracket-flag {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            margin-right: 10px;
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        }
+
+        .bracket-team:hover .bracket-flag {
+            transform: translateY(-8px) scale(1.25);
+            box-shadow: 0 8px 12px rgba(56, 189, 248, 0.5);
+        }
+
+        .bracket-team-info { display: flex; align-items: center; flex-grow: 1; }
+        .bracket-team-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); opacity: 0.85; }
+        .bracket-score { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); }
+        .bracket-winner .bracket-team-name { color: var(--text-primary); }
+        .bracket-winner .bracket-score { color: var(--brand-primary); }
+        .gold-border {
+            border: 2px solid #eab308 !important;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.2) !important;
+        }
+
+        /* ===== AUTENTICACIÓN Y FAVORITO ===== */
+        .auth-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .fav-badge {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 6px 12px 6px 8px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .fav-badge img {
+            width: 20px;
+            height: 14px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .fav-badge.active { display: flex; }
+
+        .user-email {
+            display: none;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .user-email.active { display: inline; }
+
+        .btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 9px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            border-color: var(--brand-primary);
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        .btn-primary {
+            background: var(--brand-primary);
+            border-color: var(--brand-primary);
+            color: #0b0f19;
+        }
+
+        .btn-primary:hover {
+            background: #0ea5e9;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-full { width: 100%; }
+
+        .theme-toggle-btn {
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            border-radius: 50%;
+        }
+
+        #logout-btn { display: none; }
+        #logout-btn.active { display: inline-block; }
+        #login-open-btn.hidden { display: none; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 7, 12, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--surface-solid);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 380px;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin: 0 0 4px 0;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0 0 20px 0;
+        }
+
+        .modal-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .modal-tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .modal-tab.active {
+            background: var(--brand-primary);
+            color: #0b0f19;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .field-input, .field-select {
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .field-input:focus, .field-select:focus {
+            outline: none;
+            border-color: var(--brand-primary);
+        }
+
+        .auth-error {
+            display: none;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            font-size: 0.8rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+
+        .auth-error.active { display: block; }
+
+        /* Panel de favorito (post-login) */
+        .fav-panel {
+            display: none;
+        }
+
+        .fav-panel.active { display: block; }
+
+        .fav-current {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+        }
+
+        .fav-current img {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 640px) {
+            .nav-menu { display: none; }
+            .user-email { display: none !important; }
+        }
+
+        /* ===== MENÚ MÓVIL ===== */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 10px 20px 16px 20px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 10px 8px;
+            border-radius: 8px;
+        }
+
+        .mobile-menu a:active { background: rgba(255,255,255,0.04); }
+
+        @media (max-width: 640px) {
+            .hamburger-btn { display: flex; }
+        }
+
+        /* ===== ESTADÍSTICAS RÁPIDAS ===== */
+        .quick-stats {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 18px 20px;
+            backdrop-filter: blur(12px);
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        /* ===== COUNTDOWN ===== */
+        .countdown-box {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(30,64,175,0.1));
+            border: 1px solid rgba(56,189,248,0.2);
+            border-radius: 16px;
+            padding: 24px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .countdown-box .cd-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .countdown-box .cd-title strong {
+            color: var(--text-primary);
+            display: block;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .cd-units {
+            display: flex;
+            gap: 14px;
+        }
+
+        .cd-unit {
+            text-align: center;
+            min-width: 64px;
+        }
+
+        .cd-unit .cd-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 8px 0;
+            display: block;
+        }
+
+        .cd-unit .cd-lbl {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* ===== SEDES ===== */
+        .venues-grid {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .venue-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+        }
+
+        .venue-card .venue-country {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--brand-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .venue-card .venue-country img {
+            width: 20px;
+            border-radius: 2px;
+        }
+
+        .venue-card ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            line-height: 1.9;
+        }
+
+        /* ===== RESALTADO DE FAVORITO ===== */
+        tr.fav-row td {
+            background-color: rgba(234, 179, 8, 0.08) !important;
+            box-shadow: inset 3px 0 0 #eab308;
+        }
+
+        tr.fav-row .cell-team span {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .bracket-team.fav-team {
+            background: rgba(234, 179, 8, 0.1) !important;
+            box-shadow: inset 3px 0 0 #eab308;
+        }
+
+        .bracket-team.fav-team .bracket-team-name {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        /* ===== TOASTS ===== */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: var(--surface-solid);
+            border: 1px solid var(--card-border);
+            border-left: 3px solid var(--brand-primary);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 300px;
+            animation: toast-in 0.25s ease;
+        }
+
+        .toast.toast-error { border-left-color: #ef4444; }
+        .toast.toast-success { border-left-color: #10b981; }
+
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== VOLVER ARRIBA ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--brand-primary);
+            color: #0b0f19;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 900;
+            box-shadow: 0 8px 20px rgba(56,189,248,0.35);
+        }
+
+        .back-to-top.active { display: flex; }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            max-width: 1400px;
+            margin: 60px auto 0 auto;
+            border-top: 1px solid var(--card-border);
+            padding-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .site-footer strong { color: var(--text-primary); }
+
+        /* ===== GOLEADORES ===== */
+        .scorers-card {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .medal {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .medal-1 { background: #eab308; color: #1a1a1a; }
+        .medal-2 { background: #cbd5e1; color: #1a1a1a; }
+        .medal-3 { background: #b45309; color: #fff; }
+
+        .cell-goals {
+            font-weight: 700;
+            color: #fbbf24;
+            font-size: 1rem;
+        }
+
+        /* ===== ANIMACIONES ===== */
+
+        /* Reveal al hacer scroll (solo aplica si JS corre; por defecto todo es visible) */
+        .reveal-init {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-init.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-init { opacity: 1 !important; transform: none !important; transition: none !important; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        /* Título principal con brillo animado */
+        @keyframes titleShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.15); }
+        }
+        .header-section h1 {
+            animation: titleShine 4s ease-in-out infinite;
+        }
+
+        /* Navbar con más fondo/sombra al hacer scroll */
+        nav.navbar {
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        nav.navbar.scrolled {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+        }
+
+        /* Hover con elevación suave en tarjetas */
+        .card-group, .stat-card, .venue-card, .scorers-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        .card-group:hover, .stat-card:hover, .venue-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -12px rgba(0,0,0,0.6);
+        }
+
+        .stat-card .stat-value {
+            transition: transform 0.25s ease;
+        }
+        .stat-card:hover .stat-value {
+            transform: scale(1.08);
+        }
+
+        /* Filas de tabla: entrada suave del color al pasar el mouse (ya existe hover-bg, sumamos transición) */
+        .stats-table tbody tr {
+            transition: background-color 0.2s ease, transform 0.15s ease;
+        }
+        .stats-table tbody tr:hover {
+            transform: scale(1.006);
+        }
+
+        /* Bracket: aparición en cascada + hover */
+        .bracket-match {
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+        }
+        .bracket-match:hover {
+            transform: translateX(3px);
+        }
+
+        /* Botones con leve "press" */
+        .btn, .hamburger-btn, .back-to-top {
+            transition: all 0.2s ease, transform 0.1s ease;
+        }
+        .btn:active, .back-to-top:active {
+            transform: scale(0.96);
+        }
+
+        /* Modal con transición de entrada */
+        .modal-overlay {
+            transition: opacity 0.25s ease;
+        }
+        .modal-box {
+            transform: scale(0.94) translateY(10px);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Badge de favorito: entrada tipo "pop" */
+        @keyframes favPop {
+            0% { transform: scale(0.6); opacity: 0; }
+            60% { transform: scale(1.08); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .fav-badge.active {
+            animation: favPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Countdown: pulso suave en cada número */
+        @keyframes cdPulse {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.12); }
+            100% { transform: scale(1); }
+        }
+        .cd-num.tick {
+            animation: cdPulse 0.4s ease;
+        }
+
+        /* Menú móvil: deslizado hacia abajo */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .mobile-menu.active {
+            max-height: 260px;
+            padding: 10px 20px 16px 20px;
+        }
+
+        /* Toast: además del slide existente, un poco de rebote */
+        .toast {
+            animation: toast-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Fila/team destacado como favorito: aparición con leve resplandor */
+        @keyframes favGlow {
+            0% { box-shadow: inset 3px 0 0 #eab308, 0 0 0 rgba(234,179,8,0); }
+            50% { box-shadow: inset 3px 0 0 #eab308, 0 0 14px rgba(234,179,8,0.35); }
+            100% { box-shadow: inset 3px 0 0 #eab308, 0 0 0 rgba(234,179,8,0); }
+        }
+        tr.fav-row td, .bracket-team.fav-team {
+            animation: favGlow 1.2s ease;
+        }
+
+        /* ===== RANKING DE POPULARIDAD ===== */
+        .ranking-card {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .ranking-hint {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0 0 18px 0;
+        }
+
+        .ranking-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .ranking-row:last-child { margin-bottom: 0; }
+
+        .ranking-pos {
+            width: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .ranking-flag {
+            width: 26px;
+            height: 18px;
+            object-fit: cover;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .ranking-name {
+            width: 130px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .ranking-bar-track {
+            flex-grow: 1;
+            height: 10px;
+            background: rgba(128, 128, 128, 0.15);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .ranking-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--brand-primary), #eab308);
+            border-radius: 999px;
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ranking-count {
+            width: 34px;
+            text-align: right;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            flex-shrink: 0;
+        }
+
+        .ranking-empty {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">FIFA World Cup <span>2026</span></div>
+        <div class="nav-menu">
+            <a href="#grupos" class="nav-link">Fase de Grupos</a>
+            <a href="#goleadores" class="nav-link">Goleadores</a>
+            <a href="#bracket" class="nav-link">Fase de Eliminación</a>
+            <a href="#ranking" class="nav-link">Ranking</a>
+            <a href="#sedes" class="nav-link">Sedes</a>
+        </div>
+        <div class="auth-area">
+            <button id="theme-toggle-btn" class="btn theme-toggle-btn" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">🌙</button>
+            <div id="fav-badge" class="fav-badge"></div>
+            <span id="user-email" class="user-email"></span>
+            <button id="login-open-btn" class="btn">Iniciar sesión</button>
+            <button id="logout-btn" class="btn">Cerrar sesión</button>
+            <button id="hamburger-btn" class="hamburger-btn" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#grupos">Fase de Grupos</a>
+        <a href="#goleadores">Goleadores</a>
+        <a href="#bracket">Fase de Eliminación</a>
+        <a href="#ranking">Ranking</a>
+        <a href="#sedes">Sedes</a>
+    </div>
+</nav>
+
+<!-- ================= MODAL DE AUTENTICACIÓN ================= -->
+<div id="auth-modal" class="modal-overlay">
+    <div class="modal-box">
+        <button id="modal-close" class="modal-close">&times;</button>
+
+        <!-- Vista: login / registro -->
+        <div id="auth-view">
+            <h2 class="modal-title">Tu cuenta</h2>
+            <p class="modal-subtitle">Inicia sesión para guardar tu selección favorita</p>
+
+            <div class="modal-tabs">
+                <div id="tab-login" class="modal-tab active">Iniciar sesión</div>
+                <div id="tab-register" class="modal-tab">Crear cuenta</div>
+            </div>
+
+            <div id="auth-error" class="auth-error"></div>
+
+            <form id="auth-form">
+                <label class="field-label">Correo electrónico</label>
+                <input id="auth-email" type="email" class="field-input" placeholder="tucorreo@ejemplo.com" required>
+
+                <label class="field-label">Contraseña</label>
+                <input id="auth-password" type="password" class="field-input" placeholder="Mínimo 6 caracteres" required minlength="6">
+
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary btn-full">Iniciar sesión</button>
+            </form>
+        </div>
+
+        <!-- Vista: selección de favorito (una vez logueado) -->
+        <div id="fav-view" class="fav-panel">
+            <h2 class="modal-title">Tu selección favorita</h2>
+            <p class="modal-subtitle" id="fav-welcome">Elige el equipo que vas a seguir en el torneo</p>
+
+            <div id="fav-current-box" class="fav-current" style="display:none;">
+                <img id="fav-current-flag" src="" alt="">
+                <span>Favorito actual: <strong id="fav-current-name"></strong></span>
+            </div>
+
+            <label class="field-label">Selección</label>
+            <select id="fav-select" class="field-select"></select>
+
+            <button id="fav-save-btn" class="btn btn-primary btn-full">Guardar favorito</button>
+        </div>
+    </div>
+</div>
+
+<div class="header-section">
+    <h1>Copa Mundial de la FIFA 2026</h1>
+    <p>Resultados y Clasificaciones Oficiales del Torneo en Tiempo Real</p>
+</div>
+
+<div class="countdown-box">
+    <div class="cd-title">Gran Final<strong>19 de julio de 2026 · MetLife Stadium, Nueva Jersey — España vs Argentina</strong></div>
+    <div class="cd-units" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Días</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Horas</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-min">--</span><span class="cd-lbl">Min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-sec">--</span><span class="cd-lbl">Seg</span></div>
+    </div>
+</div>
+
+<div class="quick-stats">
+    <div class="stat-card"><div class="stat-value">48</div><div class="stat-label">Selecciones</div></div>
+    <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Grupos</div></div>
+    <div class="stat-card"><div class="stat-value">104</div><div class="stat-label">Partidos</div></div>
+    <div class="stat-card"><div class="stat-value">16</div><div class="stat-label">Ciudades sede</div></div>
+    <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Países anfitriones</div></div>
+</div>
+
+<div id="ranking" class="section-title">Selección Más Popular Entre Usuarios</div>
+<div class="ranking-card">
+    <p class="ranking-hint">Calculado en vivo según la selección favorita guardada por cada usuario registrado.</p>
+    <div id="ranking-list"><div class="ranking-empty">Cargando ranking...</div></div>
+</div>
+
+<!-- ================= SECCIÓN 1: FASE DE GRUPOS (12 GRUPOS OFICIALES) ================= -->
+<div id="grupos" class="section-title">Fase de Grupos</div>
+
+<div class="grid-layout">
+    <!-- GRUPO A -->
+    <div class="card-group">
+        <div class="card-header">Grupo A</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center" style="width: 10%;">Pos</th><th style="width: 45%;">Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/mx.svg"><span>México</span></div></td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">6</td><td class="cell-center">0</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">9</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/kr.svg"><span>Corea del Sur</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center dg-neu">0</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/za.svg"><span>Sudáfrica</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">2</td><td class="cell-center">4</td><td class="cell-center dg-neg">-2</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/cz.svg"><span>Chequia</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">6</td><td class="cell-center dg-neg">-4</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO B -->
+    <div class="card-group">
+        <div class="card-header">Grupo B</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ca.svg"><span>Canadá</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">8</td><td class="cell-center">2</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ch.svg"><span>Suiza</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">6</td><td class="cell-center">3</td><td class="cell-center dg-pos">+3</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ba.svg"><span>Bosnia y Herz.</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">3</td><td class="cell-center">8</td><td class="cell-center dg-neg">-5</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/qa.svg"><span>Catar</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">5</td><td class="cell-center dg-neg">-4</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO C -->
+    <div class="card-group">
+        <div class="card-header">Grupo C</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/br.svg"><span>Brasil</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">7</td><td class="cell-center">1</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ma.svg"><span>Marruecos</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">6</td><td class="cell-center">3</td><td class="cell-center dg-pos">+3</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/gb-sct.svg"><span>Escocia</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">4</td><td class="cell-center dg-neg">-3</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ht.svg"><span>Haití</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">8</td><td class="cell-center dg-neg">-6</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO D -->
+    <div class="card-group">
+        <div class="card-header">Grupo D</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/us.svg"><span>Estados Unidos</span></div></td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">8</td><td class="cell-center">1</td><td class="cell-center dg-pos">+7</td><td class="cell-center cell-important">9</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/au.svg"><span>Australia</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">4</td><td class="cell-center">2</td><td class="cell-center dg-pos">+2</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/py.svg"><span>Paraguay</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">2</td><td class="cell-center">4</td><td class="cell-center dg-neg">-2</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/tr.svg"><span>Turquía</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">7</td><td class="cell-center dg-neg">-7</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO E -->
+    <div class="card-group">
+        <div class="card-header">Grupo E</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/de.svg"><span>Alemania</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">10</td><td class="cell-center">4</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ci.svg"><span>Costa de Marfil</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">4</td><td class="cell-center">2</td><td class="cell-center dg-pos">+2</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ec.svg"><span>Ecuador</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">1</td><td class="cell-center">1</td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center dg-neu">0</td><td class="cell-center cell-important">4</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/cw.svg"><span>Curazao</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">2</td><td class="cell-center">2</td><td class="cell-center">10</td><td class="cell-center dg-neg">-8</td><td class="cell-center cell-important">1</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO F -->
+    <div class="card-group">
+        <div class="card-header">Grupo F</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/nl.svg"><span>Países Bajos</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">10</td><td class="cell-center">4</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/jp.svg"><span>Japón</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">7</td><td class="cell-center">3</td><td class="cell-center dg-pos">+4</td><td class="cell-center cell-important">5</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/se.svg"><span>Suecia</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">1</td><td class="cell-center">1</td><td class="cell-center">7</td><td class="cell-center">7</td><td class="cell-center dg-neu">0</td><td class="cell-center cell-important">4</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/tn.svg"><span>Túnez</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center">13</td><td class="cell-center dg-neg">-10</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO G -->
+    <div class="card-group">
+        <div class="card-header">Grupo G</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/be.svg"><span>Bélgica</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">6</td><td class="cell-center">2</td><td class="cell-center dg-pos">+4</td><td class="cell-center cell-important">5</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/eg.svg"><span>Egipto</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">5</td><td class="cell-center">3</td><td class="cell-center dg-pos">+2</td><td class="cell-center cell-important">5</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ir.svg"><span>Irán</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">4</td><td class="cell-center">4</td><td class="cell-center dg-neu">0</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/nz.svg"><span>Nueva Zelanda</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">2</td><td class="cell-center">4</td><td class="cell-center">10</td><td class="cell-center dg-neg">-6</td><td class="cell-center cell-important">1</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO H -->
+    <div class="card-group">
+        <div class="card-header">Grupo H</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/es.svg"><span>España</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">5</td><td class="cell-center">0</td><td class="cell-center dg-pos">+5</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/cv.svg"><span>Cabo Verde</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">2</td><td class="cell-center dg-neu">0</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/uy.svg"><span>Uruguay</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">3</td><td class="cell-center">4</td><td class="cell-center dg-neg">-1</td><td class="cell-center cell-important">2</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/sa.svg"><span>Arabia Saudita</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">2</td><td class="cell-center">6</td><td class="cell-center dg-neg">-4</td><td class="cell-center cell-important">2</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO I -->
+    <div class="card-group">
+        <div class="card-header">Grupo I</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/fr.svg"><span>Francia</span></div></td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">7</td><td class="cell-center">1</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">9</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/no.svg"><span>Noruega</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">5</td><td class="cell-center">3</td><td class="cell-center dg-pos">+2</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/sn.svg"><span>Senegal</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">3</td><td class="cell-center">5</td><td class="cell-center dg-neg">-2</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/iq.svg"><span>Irak</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">7</td><td class="cell-center dg-neg">-6</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO J -->
+    <div class="card-group">
+        <div class="card-header">Grupo J</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ar.svg"><span>Argentina</span></div></td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">8</td><td class="cell-center">2</td><td class="cell-center dg-pos">+6</td><td class="cell-center cell-important">9</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/at.svg"><span>Austria</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">5</td><td class="cell-center">3</td><td class="cell-center dg-pos">+2</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/dz.svg"><span>Argelia</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">3</td><td class="cell-center">5</td><td class="cell-center dg-neg">-2</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/jo.svg"><span>Jordania</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">7</td><td class="cell-center dg-neg">-6</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO K -->
+    <div class="card-group">
+        <div class="card-header">Grupo K</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/pt.svg"><span>Portugal</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">6</td><td class="cell-center">2</td><td class="cell-center dg-pos">+4</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/col.svg"><span>Colombia</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">4</td><td class="cell-center">1</td><td class="cell-center dg-pos">+3</td><td class="cell-center cell-important">7</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/cd.svg"><span>RD Congo</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">3</td><td class="cell-center">5</td><td class="cell-center dg-neg">-2</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/uz.svg"><span>Uzbekistán</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">6</td><td class="cell-center dg-neg">-5</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GRUPO L -->
+    <div class="card-group">
+        <div class="card-header">Grupo L</div>
+        <table class="stats-table">
+            <thead>
+                <tr><th class="cell-center">Pos</th><th>Selección</th><th class="cell-center">PJ</th><th class="cell-center">G</th><th class="cell-center">E</th><th class="cell-center">P</th><th class="cell-center">GF</th><th class="cell-center">GC</th><th class="cell-center">DG</th><th class="cell-center">Pts</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="cell-center cell-position">1</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/gb-eng.svg"><span>Inglaterra</span></div></td><td class="cell-center">3</td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">7</td><td class="cell-center">2</td><td class="cell-center dg-pos">+5</td><td class="cell-center cell-important">9</td></tr>
+                <tr><td class="cell-center cell-position">2</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/hr.svg"><span>Croacia</span></div></td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">0</td><td class="cell-center">1</td><td class="cell-center">5</td><td class="cell-center">3</td><td class="cell-center dg-pos">+2</td><td class="cell-center cell-important">6</td></tr>
+                <tr><td class="cell-center cell-position">3</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/gh.svg"><span>Ghana</span></div></td><td class="cell-center">3</td><td class="cell-center">1</td><td class="cell-center">0</td><td class="cell-center">2</td><td class="cell-center">3</td><td class="cell-center">5</td><td class="cell-center dg-neg">-2</td><td class="cell-center cell-important">3</td></tr>
+                <tr><td class="cell-center cell-position">4</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/pa.svg"><span>Panamá</span></div></td><td class="cell-center">3</td><td class="cell-center">0</td><td class="cell-center">0</td><td class="cell-center">3</td><td class="cell-center">2</td><td class="cell-center">7</td><td class="cell-center dg-neg">-5</td><td class="cell-center cell-important">0</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ================= SECCIÓN: TABLA DE GOLEADORES ================= -->
+<div id="goleadores" class="section-title">Tabla de Goleadores</div>
+
+<div class="scorers-card">
+    <table class="stats-table">
+        <thead>
+            <tr>
+                <th class="cell-center" style="width: 8%;">Pos</th>
+                <th style="width: 32%;">Jugador</th>
+                <th style="width: 30%;">Selección</th>
+                <th class="cell-center">Asistencias</th>
+                <th class="cell-center">Goles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="cell-center cell-position"><span class="medal medal-1">1</span></td><td>Lionel Messi</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/ar.svg"><span>Argentina</span></div></td><td class="cell-center">4</td><td class="cell-center cell-goals">8</td></tr>
+            <tr><td class="cell-center cell-position"><span class="medal medal-2">2</span></td><td>Kylian Mbappé</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/fr.svg"><span>Francia</span></div></td><td class="cell-center">3</td><td class="cell-center cell-goals">8</td></tr>
+            <tr><td class="cell-center cell-position"><span class="medal medal-3">3</span></td><td>Erling Haaland</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/no.svg"><span>Noruega</span></div></td><td class="cell-center">0</td><td class="cell-center cell-goals">7</td></tr>
+            <tr><td class="cell-center cell-position">4</td><td>Jude Bellingham</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/gb-eng.svg"><span>Inglaterra</span></div></td><td class="cell-center">1</td><td class="cell-center cell-goals">6</td></tr>
+            <tr><td class="cell-center cell-position">5</td><td>Harry Kane</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/gb-eng.svg"><span>Inglaterra</span></div></td><td class="cell-center">1</td><td class="cell-center cell-goals">6</td></tr>
+            <tr><td class="cell-center cell-position">6</td><td>Ousmane Dembélé</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/fr.svg"><span>Francia</span></div></td><td class="cell-center">2</td><td class="cell-center cell-goals">5</td></tr>
+            <tr><td class="cell-center cell-position">7</td><td>Mikel Oyarzabal</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/es.svg"><span>España</span></div></td><td class="cell-center">1</td><td class="cell-center cell-goals">5</td></tr>
+            <tr><td class="cell-center cell-position">8</td><td>Julián Quiñones</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/mx.svg"><span>México</span></div></td><td class="cell-center">1</td><td class="cell-center cell-goals">4</td></tr>
+            <tr><td class="cell-center cell-position">9</td><td>Vinícius Júnior</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/br.svg"><span>Brasil</span></div></td><td class="cell-center">1</td><td class="cell-center cell-goals">4</td></tr>
+            <tr><td class="cell-center cell-position">10</td><td>Ismaïla Sarr</td><td class="cell-team"><div class="team-container"><img class="flag-img" src="https://flagcdn.com/sn.svg"><span>Senegal</span></div></td><td class="cell-center">1</td><td class="cell-center cell-goals">4</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ================= SECCIÓN 2: FASE FINAL ================= -->
+<div id="bracket" class="section-title">Fase de Eliminación Directa</div>
+
+<div class="bracket-scroll-container">
+    <div class="bracket-wrapper">
+        
+        <div class="bracket-round">
+            <h3>Dieciseisavos</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/de.svg"><span class="bracket-team-name">Alemania</span></div><span class="bracket-score">1 (3)</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/py.svg"><span class="bracket-team-name">Paraguay</span></div><span class="bracket-score">1 (4)</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/fr.svg"><span class="bracket-team-name">Francia</span></div><span class="bracket-score">3</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/se.svg"><span class="bracket-team-name">Suecia</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/za.svg"><span class="bracket-team-name">Sudáfrica</span></div><span class="bracket-score">0</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ca.svg"><span class="bracket-team-name">Canadá</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/nl.svg"><span class="bracket-team-name">Países Bajos</span></div><span class="bracket-score">1 (2)</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ma.svg"><span class="bracket-team-name">Marruecos</span></div><span class="bracket-score">1 (3)</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/pt.svg"><span class="bracket-team-name">Portugal</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/hr.svg"><span class="bracket-team-name">Croacia</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/es.svg"><span class="bracket-team-name">España</span></div><span class="bracket-score">3</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/at.svg"><span class="bracket-team-name">Austria</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/us.svg"><span class="bracket-team-name">Estados Unidos</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ba.svg"><span class="bracket-team-name">Bosnia y Herz.</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/be.svg"><span class="bracket-team-name">Bélgica</span></div><span class="bracket-score">3</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/sn.svg"><span class="bracket-team-name">Senegal</span></div><span class="bracket-score">2</span></div>
+            </div>
+        </div>
+
+        <div class="bracket-round">
+            <h3>Octavos de Final</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/py.svg"><span class="bracket-team-name">Paraguay</span></div><span class="bracket-score">0</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/fr.svg"><span class="bracket-team-name">Francia</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ca.svg"><span class="bracket-team-name">Canadá</span></div><span class="bracket-score">0</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ma.svg"><span class="bracket-team-name">Marruecos</span></div><span class="bracket-score">3</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/pt.svg"><span class="bracket-team-name">Portugal</span></div><span class="bracket-score">0</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/es.svg"><span class="bracket-team-name">España</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/be.svg"><span class="bracket-team-name">Bélgica</span></div><span class="bracket-score">4</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/us.svg"><span class="bracket-team-name">EE.UU.</span></div><span class="bracket-score">1</span></div>
+            </div>
+        </div>
+
+        <div class="bracket-round">
+            <h3>Cuartos de Final</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/fr.svg"><span class="bracket-team-name">Francia</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ma.svg"><span class="bracket-team-name">Marruecos</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/es.svg"><span class="bracket-team-name">España</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/be.svg"><span class="bracket-team-name">Bélgica</span></div><span class="bracket-score">1</span></div>
+            </div>
+        </div>
+
+        <div class="bracket-round" style="flex: 1.2;">
+            <h3>Semifinales y Final</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/fr.svg"><span class="bracket-team-name">Francia</span></div><span class="bracket-score">0</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/es.svg"><span class="bracket-team-name">España</span></div><span class="bracket-score">2</span></div>
+            </div>
+
+            <div class="bracket-match gold-border">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/es.svg"><span class="bracket-team-name">España</span></div><span class="bracket-score">-</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ar.svg"><span class="bracket-team-name">Argentina</span></div><span class="bracket-score">-</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/gb-eng.svg"><span class="bracket-team-name">Inglaterra</span></div><span class="bracket-score">1</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ar.svg"><span class="bracket-team-name">Argentina</span></div><span class="bracket-score">2</span></div>
+            </div>
+        </div>
+
+        <div class="bracket-round">
+            <h3>Cuartos de Final</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/gb-eng.svg"><span class="bracket-team-name">Inglaterra</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/no.svg"><span class="bracket-team-name">Noruega</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ar.svg"><span class="bracket-team-name">Argentina</span></div><span class="bracket-score">3</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ch.svg"><span class="bracket-team-name">Suiza</span></div><span class="bracket-score">1</span></div>
+            </div>
+        </div>
+
+        <div class="bracket-round">
+            <h3>Octavos de Final</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/br.svg"><span class="bracket-team-name">Brasil</span></div><span class="bracket-score">1</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/no.svg"><span class="bracket-team-name">Noruega</span></div><span class="bracket-score">2</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/mx.svg"><span class="bracket-team-name">México</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/gb-eng.svg"><span class="bracket-team-name">Inglaterra</span></div><span class="bracket-score">3</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ar.svg"><span class="bracket-team-name">Argentina</span></div><span class="bracket-score">3</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/eg.svg"><span class="bracket-team-name">Egipto</span></div><span class="bracket-score">2</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ch.svg"><span class="bracket-team-name">Suiza</span></div><span class="bracket-score">0 (4)</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/co.svg"><span class="bracket-team-name">Colombia</span></div><span class="bracket-score">0 (3)</span></div>
+            </div>
+        </div>
+
+        <div class="bracket-round">
+            <h3>Dieciseisavos</h3>
+            
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/br.svg"><span class="bracket-team-name">Brasil</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/jp.svg"><span class="bracket-team-name">Japón</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ci.svg"><span class="bracket-team-name">C. de Marfil</span></div><span class="bracket-score">1</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/no.svg"><span class="bracket-team-name">Noruega</span></div><span class="bracket-score">2</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/mx.svg"><span class="bracket-team-name">México</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ec.svg"><span class="bracket-team-name">Ecuador</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/gb-eng.svg"><span class="bracket-team-name">Inglaterra</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/cd.svg"><span class="bracket-team-name">RD Congo</span></div><span class="bracket-score">1</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ar.svg"><span class="bracket-team-name">Argentina</span></div><span class="bracket-score">3</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/cv.svg"><span class="bracket-team-name">Cabo Verde</span></div><span class="bracket-score">2</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/ch.svg"><span class="bracket-team-name">Suiza</span></div><span class="bracket-score">2</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/dz.svg"><span class="bracket-team-name">Argelia</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/co.svg"><span class="bracket-team-name">Colombia</span></div><span class="bracket-score">1</span></div>
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/gh.svg"><span class="bracket-team-name">Ghana</span></div><span class="bracket-score">0</span></div>
+            </div>
+
+            <div class="bracket-match">
+                <div class="bracket-team"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/au.svg"><span class="bracket-team-name">Australia</span></div><span class="bracket-score">1 (2)</span></div>
+                <div class="bracket-team bracket-winner"><div class="bracket-team-info"><img class="bracket-flag" src="https://flagcdn.com/eg.svg"><span class="bracket-team-name">Egipto</span></div><span class="bracket-score">1 (4)</span></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<p style="max-width: 1400px; margin: 16px auto 0 auto; color: var(--text-secondary); font-size: 0.85rem; text-align: center;">
+    Tercer puesto: <strong style="color: var(--text-primary);">Francia vs Inglaterra</strong> — 18 de julio, Miami &nbsp;|&nbsp;
+    Gran Final: <strong style="color: var(--text-primary);">España vs Argentina</strong> — 19 de julio, MetLife Stadium (Nueva Jersey)
+</p>
+
+<!-- ================= SECCIÓN 3: SEDES ================= -->
+<div id="sedes" class="section-title">Sedes del Torneo</div>
+
+<div class="venues-grid">
+    <div class="venue-card">
+        <div class="venue-country"><img src="https://flagcdn.com/mx.svg" alt="México">México</div>
+        <ul>
+            <li>Ciudad de México</li>
+            <li>Guadalajara</li>
+            <li>Monterrey</li>
+        </ul>
+    </div>
+    <div class="venue-card">
+        <div class="venue-country"><img src="https://flagcdn.com/us.svg" alt="Estados Unidos">Estados Unidos</div>
+        <ul>
+            <li>Nueva York / Nueva Jersey</li>
+            <li>Los Ángeles</li>
+            <li>Dallas</li>
+            <li>Miami</li>
+            <li>Atlanta</li>
+            <li>Houston</li>
+            <li>Kansas City</li>
+            <li>San Francisco</li>
+            <li>Seattle</li>
+            <li>Filadelfia</li>
+            <li>Boston</li>
+        </ul>
+    </div>
+    <div class="venue-card">
+        <div class="venue-country"><img src="https://flagcdn.com/ca.svg" alt="Canadá">Canadá</div>
+        <ul>
+            <li>Toronto</li>
+            <li>Vancouver</li>
+        </ul>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div>Proyecto académico — <strong>Copa Mundial de la FIFA 2026</strong>. Datos con fines demostrativos.</div>
+    <div>Hecho con Firebase Auth + Firestore</div>
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
+<div id="toast-container" class="toast-container"></div>
+
+<!-- ================= LOGIN + FAVORITO (FIREBASE) ================= -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+        getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+        signOut, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import {
+        getFirestore, doc, setDoc, getDoc, collection, getDocs, increment, runTransaction
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ============================================================
+    // 1) PEGA AQUÍ LA CONFIGURACIÓN DE TU PROYECTO DE FIREBASE
+    //    (Firebase Console > Configuración del proyecto > tus apps > SDK setup)
+    // ============================================================
+    const firebaseConfig = {
+        apiKey: "AIzaSyBmd6i0Uxk8Ijn64gMfrXjBEXXVFzdmDTo",
+        authDomain: "mundial2026-59a11.firebaseapp.com",
+        projectId: "mundial2026-59a11",
+        storageBucket: "mundial2026-59a11.firebasestorage.app",
+        messagingSenderId: "461096906304",
+        appId: "1:461096906304:web:30e20ecb19c4ebb306b9a5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Lista de las 48 selecciones del Mundial 2026 (código de bandera + nombre)
+    const TEAMS = [
+        {code:"de", name:"Alemania"}, {code:"sa", name:"Arabia Saudita"}, {code:"dz", name:"Argelia"},
+        {code:"ar", name:"Argentina"}, {code:"au", name:"Australia"}, {code:"at", name:"Austria"},
+        {code:"ba", name:"Bosnia y Herz."}, {code:"br", name:"Brasil"}, {code:"be", name:"Bélgica"},
+        {code:"cv", name:"Cabo Verde"}, {code:"ca", name:"Canadá"}, {code:"qa", name:"Catar"},
+        {code:"cz", name:"Chequia"}, {code:"co", name:"Colombia"}, {code:"kr", name:"Corea del Sur"},
+        {code:"ci", name:"Costa de Marfil"}, {code:"hr", name:"Croacia"}, {code:"cw", name:"Curazao"},
+        {code:"ec", name:"Ecuador"}, {code:"eg", name:"Egipto"}, {code:"gb-sct", name:"Escocia"},
+        {code:"es", name:"España"}, {code:"us", name:"Estados Unidos"}, {code:"fr", name:"Francia"},
+        {code:"gh", name:"Ghana"}, {code:"ht", name:"Haití"}, {code:"gb-eng", name:"Inglaterra"},
+        {code:"iq", name:"Irak"}, {code:"ir", name:"Irán"}, {code:"jp", name:"Japón"},
+        {code:"jo", name:"Jordania"}, {code:"ma", name:"Marruecos"}, {code:"mx", name:"México"},
+        {code:"no", name:"Noruega"}, {code:"nz", name:"Nueva Zelanda"}, {code:"pa", name:"Panamá"},
+        {code:"py", name:"Paraguay"}, {code:"nl", name:"Países Bajos"}, {code:"pt", name:"Portugal"},
+        {code:"cd", name:"RD Congo"}, {code:"sn", name:"Senegal"}, {code:"za", name:"Sudáfrica"},
+        {code:"se", name:"Suecia"}, {code:"ch", name:"Suiza"}, {code:"tr", name:"Turquía"},
+        {code:"tn", name:"Túnez"}, {code:"uy", name:"Uruguay"}, {code:"uz", name:"Uzbekistán"}
+    ].sort((a, b) => a.name.localeCompare(b.name, "es"));
+
+    // Referencias al DOM
+    const loginOpenBtn = document.getElementById("login-open-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const modal = document.getElementById("auth-modal");
+    const modalClose = document.getElementById("modal-close");
+    const authView = document.getElementById("auth-view");
+    const favView = document.getElementById("fav-view");
+    const tabLogin = document.getElementById("tab-login");
+    const tabRegister = document.getElementById("tab-register");
+    const authForm = document.getElementById("auth-form");
+    const authEmail = document.getElementById("auth-email");
+    const authPassword = document.getElementById("auth-password");
+    const authSubmitBtn = document.getElementById("auth-submit-btn");
+    const authError = document.getElementById("auth-error");
+    const userEmailEl = document.getElementById("user-email");
+    const favBadge = document.getElementById("fav-badge");
+    const favSelect = document.getElementById("fav-select");
+    const favSaveBtn = document.getElementById("fav-save-btn");
+    const favCurrentBox = document.getElementById("fav-current-box");
+    const favCurrentFlag = document.getElementById("fav-current-flag");
+    const favCurrentName = document.getElementById("fav-current-name");
+    const favWelcome = document.getElementById("fav-welcome");
+
+    let mode = "login"; // "login" | "register"
+
+    // ===== ANIMACIONES: REVEAL AL HACER SCROLL =====
+    const revealSelector = ".card-group, .stat-card, .venue-card, .scorers-card, .countdown-box, .ranking-card";
+    const revealTargets = document.querySelectorAll(revealSelector);
+    revealTargets.forEach((el, i) => {
+        el.classList.add("reveal-init");
+        el.style.transitionDelay = `${Math.min(i % 6, 5) * 60}ms`;
+    });
+    if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in-view");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealTargets.forEach((el) => revealObserver.observe(el));
+
+        // Bracket: aparición en cascada por ronda
+        document.querySelectorAll(".bracket-round").forEach((round) => {
+            const matches = round.querySelectorAll(".bracket-match");
+            matches.forEach((m) => {
+                m.style.opacity = "0";
+                m.style.transform = "translateY(14px)";
+            });
+            const roundObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        matches.forEach((m, i) => {
+                            setTimeout(() => {
+                                m.style.opacity = "1";
+                                m.style.transform = "translateY(0)";
+                            }, i * 70);
+                        });
+                        roundObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            roundObserver.observe(round);
+        });
+    }
+
+    // ===== NAVBAR CON SOMBRA AL HACER SCROLL =====
+    const navbarEl = document.querySelector("nav.navbar");
+    window.addEventListener("scroll", () => {
+        navbarEl.classList.toggle("scrolled", window.scrollY > 30);
+    });
+
+    // ===== MODO CLARO / OSCURO =====
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const htmlEl = document.documentElement;
+    function applyTheme(theme) {
+        htmlEl.setAttribute("data-theme", theme);
+        themeToggleBtn.textContent = theme === "light" ? "☀️" : "🌙";
+    }
+    let savedTheme = "dark";
+    try { savedTheme = localStorage.getItem("mundial-theme") || "dark"; } catch (e) {}
+    applyTheme(savedTheme);
+    themeToggleBtn.addEventListener("click", () => {
+        const current = htmlEl.getAttribute("data-theme") === "light" ? "light" : "dark";
+        const next = current === "light" ? "dark" : "light";
+        applyTheme(next);
+        try { localStorage.setItem("mundial-theme", next); } catch (e) {}
+    });
+
+    // ===== TOASTS (reemplaza alert()) =====
+    const toastContainer = document.getElementById("toast-container");
+    function showToast(message, type = "info") {
+        const el = document.createElement("div");
+        el.className = `toast ${type === "error" ? "toast-error" : type === "success" ? "toast-success" : ""}`;
+        el.textContent = message;
+        toastContainer.appendChild(el);
+        setTimeout(() => el.remove(), 3500);
+    }
+
+    // ===== MENÚ MÓVIL =====
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    hamburgerBtn.addEventListener("click", () => mobileMenu.classList.toggle("active"));
+    mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("active")));
+
+    // ===== VOLVER ARRIBA =====
+    const backToTopBtn = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+        backToTopBtn.classList.toggle("active", window.scrollY > 500);
+    });
+    backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // ===== COUNTDOWN AL MUNDIAL =====
+    const WORLD_CUP_START = new Date("2026-07-19T15:00:00-05:00").getTime();
+    function updateCountdown() {
+        const diff = WORLD_CUP_START - Date.now();
+        const cdDays = document.getElementById("cd-days");
+        const cdHours = document.getElementById("cd-hours");
+        const cdMin = document.getElementById("cd-min");
+        const cdSec = document.getElementById("cd-sec");
+        if (diff <= 0) {
+            cdDays.textContent = "0"; cdHours.textContent = "0"; cdMin.textContent = "0"; cdSec.textContent = "0";
+            return;
+        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        cdDays.textContent = d;
+        cdHours.textContent = String(h).padStart(2, "0");
+        cdMin.textContent = String(m).padStart(2, "0");
+        cdSec.textContent = String(s).padStart(2, "0");
+        cdSec.classList.remove("tick");
+        void cdSec.offsetWidth; // reinicia la animación
+        cdSec.classList.add("tick");
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== RESALTAR EQUIPO FAVORITO EN TABLAS Y BRACKET =====
+    function highlightFavoriteTeam(teamName) {
+        document.querySelectorAll("tr.fav-row").forEach(tr => tr.classList.remove("fav-row"));
+        document.querySelectorAll(".bracket-team.fav-team").forEach(el => el.classList.remove("fav-team"));
+        if (!teamName) return;
+
+        document.querySelectorAll(".cell-team span").forEach(span => {
+            if (span.textContent.trim() === teamName) {
+                const row = span.closest("tr");
+                if (row) row.classList.add("fav-row");
+            }
+        });
+        document.querySelectorAll(".bracket-team-name").forEach(span => {
+            if (span.textContent.trim() === teamName) {
+                const teamEl = span.closest(".bracket-team");
+                if (teamEl) teamEl.classList.add("fav-team");
+            }
+        });
+    }
+
+    // Poblar el select de equipos
+    TEAMS.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t.code;
+        opt.textContent = t.name;
+        favSelect.appendChild(opt);
+    });
+
+    function openModal() {
+        modal.classList.add("active");
+        authError.classList.remove("active");
+    }
+    function closeModal() {
+        modal.classList.remove("active");
+    }
+    loginOpenBtn.addEventListener("click", openModal);
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+
+    function setMode(newMode) {
+        mode = newMode;
+        tabLogin.classList.toggle("active", mode === "login");
+        tabRegister.classList.toggle("active", mode === "register");
+        authSubmitBtn.textContent = mode === "login" ? "Iniciar sesión" : "Crear cuenta";
+        authError.classList.remove("active");
+    }
+    tabLogin.addEventListener("click", () => setMode("login"));
+    tabRegister.addEventListener("click", () => setMode("register"));
+
+    function showError(msg) {
+        authError.textContent = msg;
+        authError.classList.add("active");
+    }
+
+    // Traduce errores comunes de Firebase a mensajes en español
+    function translateAuthError(code) {
+        const map = {
+            "auth/email-already-in-use": "Ese correo ya está registrado.",
+            "auth/invalid-email": "El correo no es válido.",
+            "auth/weak-password": "La contraseña debe tener al menos 6 caracteres.",
+            "auth/user-not-found": "No existe una cuenta con ese correo.",
+            "auth/wrong-password": "Contraseña incorrecta.",
+            "auth/invalid-credential": "Correo o contraseña incorrectos.",
+            "auth/too-many-requests": "Demasiados intentos. Intenta más tarde."
+        };
+        return map[code] || "Ocurrió un error. Intenta de nuevo.";
+    }
+
+    authForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        authError.classList.remove("active");
+        const email = authEmail.value.trim();
+        const password = authPassword.value;
+        authSubmitBtn.disabled = true;
+        try {
+            if (mode === "login") {
+                await signInWithEmailAndPassword(auth, email, password);
+            } else {
+                await createUserWithEmailAndPassword(auth, email, password);
+            }
+            authForm.reset();
+        } catch (err) {
+            showError(translateAuthError(err.code));
+        } finally {
+            authSubmitBtn.disabled = false;
+        }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+        await signOut(auth);
+    });
+
+    function renderFavBadge(team) {
+        if (!team) {
+            favBadge.classList.remove("active");
+            favBadge.innerHTML = "";
+            return;
+        }
+        favBadge.classList.add("active");
+        favBadge.innerHTML = `<img src="https://flagcdn.com/${team.code}.svg" alt="${team.name}"><span>${team.name}</span>`;
+    }
+
+    async function loadFavorite(uid) {
+        const snap = await getDoc(doc(db, "users", uid));
+        if (snap.exists() && snap.data().favoriteTeam) {
+            return snap.data().favoriteTeam; // {code, name}
+        }
+        return null;
+    }
+
+    // ===== RANKING DE POPULARIDAD =====
+    const rankingListEl = document.getElementById("ranking-list");
+
+    async function loadPopularity() {
+        try {
+            const snap = await getDocs(collection(db, "popularity"));
+            const rows = [];
+            snap.forEach((d) => {
+                const data = d.data();
+                if (data && data.count > 0) rows.push({ code: d.id, name: data.name || d.id, count: data.count });
+            });
+            rows.sort((a, b) => b.count - a.count);
+            const top = rows.slice(0, 10);
+
+            if (top.length === 0) {
+                rankingListEl.innerHTML = `<div class="ranking-empty">Todavía nadie ha guardado una selección favorita. ¡Sé el primero!</div>`;
+                return;
+            }
+            const maxCount = top[0].count;
+            rankingListEl.innerHTML = top.map((row, i) => `
+                <div class="ranking-row">
+                    <span class="ranking-pos">${i + 1}</span>
+                    <img class="ranking-flag" src="https://flagcdn.com/${row.code}.svg" alt="${row.name}">
+                    <span class="ranking-name">${row.name}</span>
+                    <div class="ranking-bar-track"><div class="ranking-bar-fill" style="width:${(row.count / maxCount) * 100}%"></div></div>
+                    <span class="ranking-count">${row.count}</span>
+                </div>
+            `).join("");
+        } catch (err) {
+            console.error("Error cargando ranking de popularidad:", err.code || err.message || err);
+            rankingListEl.innerHTML = `<div class="ranking-empty">No se pudo cargar el ranking (revisa las reglas de Firestore para la colección "popularity"). Ver consola para más detalles.</div>`;
+        }
+    }
+    loadPopularity();
+
+    async function updatePopularity(oldTeam, newTeam) {
+        try {
+            if (oldTeam && oldTeam.code === newTeam.code) return; // sin cambio real
+            if (oldTeam) {
+                await setDoc(doc(db, "popularity", oldTeam.code), { name: oldTeam.name, count: increment(-1) }, { merge: true });
+            }
+            await setDoc(doc(db, "popularity", newTeam.code), { name: newTeam.name, count: increment(1) }, { merge: true });
+            await loadPopularity();
+        } catch (err) {
+            console.error("Error actualizando ranking de popularidad:", err.code || err.message || err);
+            showToast("Tu favorito se guardó, pero el ranking no se pudo actualizar (revisa las reglas de Firestore).", "error");
+        }
+    }
+
+    let currentFavTeam = null; // se actualiza al cargar sesión y al guardar
+
+    favSaveBtn.addEventListener("click", async () => {
+        const user = auth.currentUser;
+        if (!user) return;
+        const code = favSelect.value;
+        const team = TEAMS.find(t => t.code === code);
+        favSaveBtn.disabled = true;
+        favSaveBtn.textContent = "Guardando...";
+        try {
+            await setDoc(doc(db, "users", user.uid), { favoriteTeam: team, email: user.email }, { merge: true });
+            await updatePopularity(currentFavTeam, team);
+            currentFavTeam = team;
+            renderFavBadge(team);
+            highlightFavoriteTeam(team.name);
+            favCurrentBox.style.display = "flex";
+            favCurrentFlag.src = `https://flagcdn.com/${team.code}.svg`;
+            favCurrentName.textContent = team.name;
+            showToast(`Guardaste a ${team.name} como tu selección favorita ⭐`, "success");
+            setTimeout(closeModal, 600);
+        } catch (err) {
+            showToast("No se pudo guardar tu favorito. Intenta de nuevo.", "error");
+        } finally {
+            favSaveBtn.disabled = false;
+            favSaveBtn.textContent = "Guardar favorito";
+        }
+    });
+
+    // Estado de sesión
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            loginOpenBtn.classList.add("hidden");
+            logoutBtn.classList.add("active");
+            userEmailEl.classList.add("active");
+            userEmailEl.textContent = user.email;
+
+            authView.style.display = "none";
+            favView.classList.add("active");
+            favWelcome.textContent = `Hola, ${user.email}. Elige el equipo que vas a seguir.`;
+
+            const fav = await loadFavorite(user.uid);
+            currentFavTeam = fav;
+            renderFavBadge(fav);
+            if (fav) {
+                favSelect.value = fav.code;
+                favCurrentBox.style.display = "flex";
+                favCurrentFlag.src = `https://flagcdn.com/${fav.code}.svg`;
+                favCurrentName.textContent = fav.name;
+                highlightFavoriteTeam(fav.name);
+            } else {
+                favCurrentBox.style.display = "none";
+                highlightFavoriteTeam(null);
+            }
+
+            // Si el modal está abierto en la vista de login justo cuando el usuario
+            // termina de autenticarse, lo abrimos en la vista de favorito.
+            if (modal.classList.contains("active")) {
+                openModal();
+            }
+        } else {
+            loginOpenBtn.classList.remove("hidden");
+            logoutBtn.classList.remove("active");
+            userEmailEl.classList.remove("active");
+            userEmailEl.textContent = "";
+            renderFavBadge(null);
+            highlightFavoriteTeam(null);
+            currentFavTeam = null;
+
+            authView.style.display = "block";
+            favView.classList.remove("active");
+            setMode("login");
+        }
+    });
+</script>
+
+</body>
+</html>
